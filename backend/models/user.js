@@ -3,14 +3,15 @@ const getDb = require("../util/database").getDB;
 const { ObjectID } = require("mongodb");
 class User {
     constructor(id, firstName, lastName, userName, password, role, order = []) {
-        this._id = id;
-        this.firstName = firstName;
-        this.lastName = lastName
-        this.userName = userName;
-        this.password = password;
-        this.role = role;
-        this.orderHistory = order;
-    }
+            this._id = id;
+            this.firstName = firstName;
+            this.lastName = lastName
+            this.userName = userName;
+            this.password = password;
+            this.role = role;
+            this.orderHistory = order;
+        }
+        //login method
     login() {
         return getDb().collection('users').findOne({ userName: this.userName, password: this.password });
     }
@@ -26,10 +27,11 @@ class User {
             .findOne({ userName: userName });
     }
     static checkUserName(userName) {
-        return getDb()
-            .collection("users")
-            .findOne({ userName: userName });
-    }
+            return getDb()
+                .collection("users")
+                .findOne({ userName: userName });
+        }
+        //update user's info
     update() {
         return getDb()
             .collection("users")
