@@ -21,34 +21,6 @@ class User {
     static findAll() {
         return getDb().collection("users").find().toArray();
     }
-    static findByUserName(userName) {
-        return getDb()
-            .collection("users")
-            .findOne({ userName: userName });
-    }
-    static checkUserName(userName) {
-            return getDb()
-                .collection("users")
-                .findOne({ userName: userName });
-        }
-        //update user's info
-    update() {
-        return getDb()
-            .collection("users")
-            .updateOne({ _id: new ObjectID(this._id) }, {
-                $set: {
-                    firstName: this.firstName,
-                    lastName: this.lastName,
-                    userName: this.userName,
-                    password: this.password,
-                    role: this.role
-                },
-            });
-    }
-    static deleteById(id) {
-        return getDb()
-            .collection("users")
-            .deleteOne({ _id: new ObjectID(id) });
-    }
+
 }
 module.exports = User;
